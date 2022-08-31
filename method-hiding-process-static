@@ -1,0 +1,27 @@
+PClass.java
+package test;
+public class PClass {
+    public static void m(int x)//Hided method 
+    {
+    	System.out.println("====PClass m(x)====");
+    	System.out.println("The value of x:"+x);
+     }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+	public static void m(int x) {
+    	System.out.println("====CClass m(x)====");
+    	System.out.println("The value of x:"+x);
+     }
+}
+
+DemoInheritance7.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance7 {
+	public static void main(String[] args) {
+        CClass.m(123);
+	}
+}
