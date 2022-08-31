@@ -1,0 +1,27 @@
+PClass.java
+package test;
+public class PClass {
+   public void calculate(int x,int y) {
+	   System.out.println("===PClass calculate(x,y)===");
+	   System.out.println("x:"+x+"\ny:"+y);
+   }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+	public void calculate(int x,int y) {
+		   System.out.println("===CClass calculate(x,y)===");
+		   System.out.println("x:"+x+"\ny:"+y);
+	   }
+}
+
+DemoInheritance6.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance6 {
+	public static void main(String[] args) {
+        CClass ob = new CClass();
+        ob.calculate(12, 13);
+	}
+}
