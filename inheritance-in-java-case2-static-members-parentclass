@@ -1,0 +1,45 @@
+PClass.java
+package test;
+public class PClass {
+   public static int a=10;
+   public static void m1() {
+	   System.out.println("====PClass m1()====");
+	   System.out.println("The value a:"+a);;
+   }
+   
+   static
+   {
+	   System.out.println("====PClass Static block====");
+	   System.out.println("The value a:"+a); 
+   }
+}
+
+
+
+CClass.java
+package test;
+public class CClass extends PClass{
+	   public static int b=10;
+	   public static void m2() {
+		   System.out.println("====CClass m2()====");
+		   System.out.println("The value b:"+b);
+	   }
+	   
+	   static
+	   {
+		   System.out.println("====CClass Static block====");
+		   System.out.println("The value b:"+b); 
+	   }
+}
+
+
+
+DemoInheritance2.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance2 {
+	public static void main(String[] args) {
+       CClass.m1();//PClass method call
+       CClass.m2();//CClass method call
+	}
+}
