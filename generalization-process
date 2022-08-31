@@ -1,0 +1,46 @@
+//In Generalization process,one object created holding all the 
+//members of PClass and only Overriding members from the CClass.
+//we use the following syntax to perform Generalization process:
+  // PClass ob = (PClass)new CClass();
+
+
+
+PClass.java
+package test;
+public class PClass {
+  public void m1(int x) {
+	  System.out.println("====PClass m1(x)====");
+	  System.out.println("x:"+x);
+  }
+  public void m2(int y) {
+	  System.out.println("====PClass m2(y)=====");
+	  System.out.println("y:"+y);
+   }
+	  
+}
+
+CClass.java
+package test;
+public class CClass extends PClass {
+	public void m1(int x) {
+		  System.out.println("====Overriding method m1(x)====");
+		  System.out.println("x:"+x);
+	  }
+	  public void m3(int z) {
+		  System.out.println("====PClass m3(z)=====");
+		  System.out.println("z:"+z);
+	   }
+}
+
+DemoInheritance12.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance12 {
+	public static void main(String[] args) {
+        PClass ob = (PClass)new CClass();
+        ob.m1(12);
+        ob.m2(13);
+       // ob.m3(15);//Error
+        CClass ob2 = (CClass)new PClass();
+	}
+}
