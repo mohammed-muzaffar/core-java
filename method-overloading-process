@@ -1,0 +1,133 @@
+//Case-1 : Instance method Overloading process
+PClass.java
+package test;
+public class PClass {
+   public void m(int a) {
+	   System.out.println("===m(a)===");
+	   System.out.println("The value a:"+a);
+   }
+   public void m(int a,int b) {
+	   this.m(a);//Same_class_method_1_para
+	 System.out.println("====m(a,b)====");
+	 System.out.println("The value b:"+b);
+   }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+  public void m(int a,int b,int c) {
+	  super.m(a, b);//PClass_method_2_para
+	System.out.println("====m(a,b,c)====");
+	System.out.println("The value c:"+c);
+  }
+  public void m(int a,int b,int c,int d) {
+	  this.m(a, b, c);//method_from_Same_call_3_para
+	System.out.println("====m(a,b,c,d)====");
+	System.out.println("The value d:"+d);
+  }
+}
+
+DemoInheritance8.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance8 {
+	public static void main(String[] args) {
+       CClass ob = new CClass();
+       ob.m(11, 12, 13, 14);//method_4_para
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Case-2 : Static method Overloading process
+
+PClass.java
+package test;
+public class PClass {
+   public static void m(int a) {
+	   System.out.println("===m(a)===");
+	   System.out.println("The value a:"+a);
+   }
+   public static void m(int a,int b) {
+	  
+	 System.out.println("====m(a,b)====");
+	 System.out.println("The value a:"+a);
+	 System.out.println("The value b:"+b);
+   }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+  public static void m(int a,int b,int c) {
+	System.out.println("====m(a,b,c)====");
+	System.out.println("The value a:"+a);
+	System.out.println("The value b:"+b);
+	System.out.println("The value c:"+c);
+  }
+  public static void m(int a,int b,int c,int d) {
+	System.out.println("====m(a,b,c,d)====");
+	System.out.println("The value a:"+a);
+	System.out.println("The value b:"+b);
+	System.out.println("The value c:"+c);
+	System.out.println("The value d:"+d);
+  }
+  public void access(int a,int b,int c,int d)//Instance methods
+  {
+	  this.m(a, b, c, d);
+	  this.m(a, b, c);
+	  super.m(a, b);
+	  super.m(a);
+  }
+}
+
+DemoInheritance10.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance10 {
+	public static void main(String[] args) {
+       CClass ob = new CClass();
+       ob.access(11,12,13,14);
+	}
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//Case-3 : Constructor Overloading process
+
+
+PClass.java
+package test;
+public class PClass {
+   public PClass(int a,int b) {
+	   this(a);//Same_call_con_Call_1_para
+	   System.out.println("The value b:"+b);
+   }
+   public PClass(int a) {
+	   System.out.println("The value a:"+a);
+   }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+     public CClass(int a,int b,int c,int d) {
+    	 this(a,b,c);//Same_Class_Con_Call_3_Para
+    	 System.out.println("The value d:"+d);
+     }
+     public CClass(int a,int b,int c) {
+    	 super(a,b);//PClass_Con_Call_2_para
+    	 System.out.println("The value c:"+c);
+     }
+}
+
+DemoInheritance11.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance11 {
+	public static void main(String[] args) {
+       CClass ob = new CClass(11,12,13,14);//CClass_4_para
+	}
+}
