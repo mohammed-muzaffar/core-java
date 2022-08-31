@@ -1,0 +1,45 @@
+//Case-1 : Instance members of ParentClass/SuperClass
+
+PClass.java
+package test;
+public class PClass {
+   public int a=10;
+   public void m1() {
+	   System.out.println("====PClass m1()====");
+	   System.out.println("The value a:"+a);;
+   }
+   
+   {
+	   System.out.println("====PClass Instance block====");
+	   System.out.println("The value a:"+a); 
+   }
+}
+
+
+
+CClass.java
+package test;
+public class CClass extends PClass{
+	   public int b=10;
+	   public void m2() {
+		   System.out.println("====CClass m2()====");
+		   System.out.println("The value b:"+b);
+	   }
+	   
+	   {
+		   System.out.println("====CClass Instance block====");
+		   System.out.println("The value b:"+b); 
+	   }
+}
+
+
+DemoInheritance1.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance1 {
+	public static void main(String[] args) {
+       CClass ob = new CClass();//CClass Object
+       ob.m1();//PClass method call
+       ob.m2();//CClass method call
+	}
+}
