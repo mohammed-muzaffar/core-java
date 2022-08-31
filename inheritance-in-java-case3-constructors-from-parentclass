@@ -1,0 +1,60 @@
+//(i)0-parameter constructor in ParentClass/SuperClass
+
+PClass.java
+package test;
+public class PClass {
+	public int a=10;
+    public PClass() {
+    	System.out.println("===PClass con===");
+    	System.out.println("The value a:"+a);
+    }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+     public int b=20;
+     public CClass() {
+    	 System.out.println("===CClass con===");
+    	 System.out.println("The value b:"+b);
+     }
+}
+
+
+DemoInheritance4.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance4 {
+	public static void main(String[] args) {
+         CClass ob = new CClass();//CClass Con_Call
+	}
+}
+
+
+//(ii)Parameterized Constructor in ParentClass/SuperClass
+
+PClass.java
+package test;
+public class PClass {
+    public PClass(int a) {
+    	System.out.println("===PClass con===");
+    	System.out.println("The value a:"+a);
+    }
+}
+
+CClass.java
+package test;
+public class CClass extends PClass{
+     public CClass(int a) {
+    	 super(a);//PClass_Con_Call
+     }
+}
+
+DemoInheritance5.java(MainClass)
+package maccess;
+import test.*;
+public class DemoInheritance5 {
+	public static void main(String[] args) {
+         CClass ob = new CClass(123);//CClass Con_Call
+	}
+}
