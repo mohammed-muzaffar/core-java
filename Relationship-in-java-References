@@ -1,0 +1,99 @@
+package test;
+
+public class Address {
+		public long hNo;
+		public String sName;
+		public String city;
+		public int pinCode;
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package test;
+
+public class Contact {
+	public String mailId;
+	public long phNo;
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package test;
+
+public class DisplayDetails {
+  public void dis(Employee e) {
+	  System.out.println(e.toString());
+  }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package test;
+
+public class Salary {
+	public long bSal;
+	public long totSal;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package test;
+
+public class Employee {
+	public long eId;
+	public String eName;
+	public String Desc;
+	public Address ad;// creating reference variable
+	public Contact co;// creating reference variable
+	public Salary sal;// creating reference variable
+	public Employee(Address ob1, Contact ob2, Salary ob3) 
+	{
+		ad = ob1;
+		co = ob2;
+		sal = ob3;
+	}
+	public String toString() {
+		return eId+"\n"+eName+"\n"+Desc+"\n"+ad.sName+"\n"+ad.city+"\n"+ad.hNo+"\n"+ad.pinCode+"\n"+co.mailId+"\n"+co.phNo+"\n"+sal.bSal+"\n"+sal.totSal;
+	}
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package test;
+public class EmpRegistration {
+	public void registration(java.util.Scanner s, Employee e) {
+			System.out.println("Give your details for registration");
+			System.out.println("Enter the house number");
+			e.ad.hNo = Long.parseLong(s.nextLine());
+			System.out.println("Enter the street name");
+			e.ad.sName = s.nextLine();
+			System.out.println("Enter the city name");
+			e.ad.city = s.nextLine();
+			System.out.println("Enter your mailid");
+			e.co.mailId=s.nextLine();
+			System.out.println("Enter your register phone number");
+			e.co.phNo = Long.parseLong(s.nextLine());
+			System.out.println("Enter your basic salary");
+			e.sal.bSal=Long.parseLong(s.nextLine());
+			System.out.println("Enter your total salary");
+			e.sal.totSal=Long.parseLong(s.nextLine());
+			System.out.println("Enter the pincode number of your area");
+			e.ad.pinCode = s.nextInt();
+	}
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package maccess;
+import test.*;
+import java.util.*;
+public class DemoReference {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		Address ad = new Address();
+		Contact co = new Contact();
+		Salary sal = new Salary();
+		Employee em = new Employee(ad, co, sal);
+		EmpRegistration  reg= new EmpRegistration();
+		reg.registration(s,em);
+		DisplayDetails dis = new DisplayDetails();
+		dis.dis(em);
+		s.close();
+	}
+
+}
