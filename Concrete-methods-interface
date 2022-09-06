@@ -1,0 +1,67 @@
+//Interface
+ITest.java
+
+package test;
+
+public interface ITest {
+	public abstract void m1(int x);
+	public static void m2(int x, int y) {
+		System.out.println("Static concrete method");
+		System.out.println("The value of x: "+x);
+		System.out.println("The value of y:"+y);
+	}
+	public default void m3(int x, int y, int z) {
+		System.out.println("Default concrete method");
+		System.out.println("The value of x:"+x);
+		System.out.println("The value of y:"+y);
+		System.out.println("The value of z:"+z);
+	}
+	private static void m4(int x) {
+		System.out.println("Private static concrete method");
+		System.out.println("The value of x:"+x);
+	}
+	private void m5(int y) {
+		System.out.println("Private non-static concrete method");
+		System.out.println("The value of y:"+y);
+	}
+	public default void access(int x, int y) {
+		ITest.m4(x);
+		this.m5(y);
+	}
+}
+
+//Implementation class for abstrat method
+ImplementationClass.java
+
+package test;
+
+public class ImplementationClass implements ITest{
+	public void m1(int x) {
+		System.out.println("Abstract method implemented in class");
+		System.out.println("The value of x:"+x);
+	}
+}
+
+//main class
+
+package maccess;
+import test.*;
+import java.util.*;
+public class DemoInterfaceConcreteMethod {
+
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	System.out.println("Enter the number of abstract method");
+	int x = s.nextInt();
+	System.out.println("Enter the second number for all concrete method");
+	int y = s.nextInt();
+	ImplementationClass ab = new ImplementationClass();
+	ab.m1(x);
+	ITest.m2(x, y);
+	ab.m3(x, x, y);
+	ab.access(x, y);
+	s.close();
+	}
+}
+
+
