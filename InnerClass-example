@@ -1,0 +1,38 @@
+package test;
+
+public class OuterClass {
+	public int a = 10; 
+	public static int b = 20; 
+	public void m1() { 
+		System.out.println("==Outerclass method===");
+		System.out.println("The value of a:"+a);
+		System.out.println("The value of b:"+b);
+	}
+	public static class innerClass{
+		public void m2() { 
+			System.out.println("==innerclass instance method==");
+//			System.out.println("The value of a:"+a); error
+			System.out.println("The value of b:"+b);
+		}
+		public static void m3() {
+			System.out.println("==Innerclass static method==");
+//			System.out.println("The value of a:"+a); error
+			System.out.println("The value of b:"+b);
+		}
+	}
+} 
+
+
+package maccess;
+import test.OuterClass;
+public class InnerClassMaccess {
+
+	public static void main(String[] args) {
+		OuterClass ob = new OuterClass();
+		ob.m1();
+		OuterClass.innerClass ob2 = new OuterClass.innerClass();
+		ob2.m2();
+		OuterClass.innerClass.m3();
+	}
+
+}
