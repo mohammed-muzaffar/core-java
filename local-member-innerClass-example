@@ -1,0 +1,53 @@
+package test;
+
+public class OuterClass {
+	public static int a = 20;
+	public int b = 10;
+	public void m1() {
+		 class innerClass{
+			public void m2() {
+				System.out.println("==local innerclass instance method (non-static method)===");
+				System.out.println("a value is:"+a);
+				System.out.println("b value is:"+b);
+			}
+			public static void m3() {
+				System.out.println("===local innerclass static method (non-static method)===");
+				System.out.println("a value is:"+a);
+				//System.out.println("b value is:"+b);
+			}
+		}
+		 innerClass ob = new innerClass();
+		 ob.m2();
+		 innerClass.m3();
+	}
+	public static void m4() {
+		class innerClass2{
+			public void m5() {
+				System.out.println("==local innerclass instance method (static method)===");
+				System.out.println("a value is:"+a);
+				//System.out.println("b value is:"+b);
+			}
+			public static void m6() {
+				System.out.println("==local innerclass static method (static method)===");
+				System.out.println("a value is:"+a);
+				//System.out.println("b value is:"+b);
+			}
+		}
+		innerClass2 ob2 = new innerClass2();
+		ob2.m5();
+		innerClass2.m6();
+	}
+}
+
+
+package maccess;
+import test.*;
+public class Outermaccess {
+
+	public static void main(String[] args) {
+		OuterClass ob = new OuterClass();
+		ob.m1();
+		OuterClass.m4();
+	}
+
+}
