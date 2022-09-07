@@ -1,0 +1,23 @@
+package maccess;
+import java.util.*;
+public class ArrayLastElementCharacter {
+
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	System.out.println("Enter the size of the array");
+	int n = Integer.parseInt(s.nextLine());
+	String a[] = new String[n];
+	System.out.println("Enter the"+n+" object in array");
+	for(int i = 0; i < n; i++) {
+		a[i] = new String(s.nextLine());
+	}
+	System.out.println("==Displaying using the spliterator<T>");
+    Spliterator<String> sp = Arrays.spliterator(a);
+    sp.forEachRemaining((k)->{
+    	String str = k.toString();
+    	char ch = str.charAt(a.length-1);
+    	System.out.println(ch);
+    });
+    s.close();
+	}
+
