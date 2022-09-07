@@ -1,0 +1,27 @@
+package maccess;
+import java.util.*;
+public class twoDimensional {
+
+	public static void main(String[] args) {
+		Object a[] = new Object[3];
+		a[0] = new Integer(123);
+		a[1] = new String("NIT HYD");
+	    Spliterator<Object> sp = Arrays.spliterator(a);
+	    sp.forEachRemaining((k)->{
+	    	System.out.println(k.toString());
+	    });
+	    
+	    Integer a1[] = {1,2,3};
+	    Integer a2[] = {11,22,33};
+	    //Jagged array
+	    Integer a3[][] = {a1,a2};
+		Spliterator<Integer[]> td1 = Arrays.spliterator(a3);
+		td1.forEachRemaining((k)->{
+			Spliterator<Integer> td2 = Arrays.spliterator(k);
+			td2.forEachRemaining((z)-> {
+				System.out.print(z.toString());
+			});
+		});
+	}
+
+}
