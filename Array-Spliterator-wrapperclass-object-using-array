@@ -1,0 +1,28 @@
+package maccess;
+import java.util.*;
+public class IntegerArraySpliterator {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the size of the array");
+		int n = Integer.parseInt(s.nextLine());
+		Integer a[] = new Integer[n]; //wapper class array object
+		for(int i = 0; i < n; i++) {
+			a[i] = new Integer(s.nextLine());
+		}
+		System.out.println("===Displaying array using old loop");
+		for(int i = 0; i < n; i++) {
+			System.out.print(a[i].toString());
+		}
+		System.out.println("\n===Displaying array using extended for");
+		for(Integer k: a) {
+			System.out.print(k.toString());
+		}
+		System.out.println("\n==Displaying array using spliterator<T>");
+		Spliterator<Integer> sp = Arrays.spliterator(a);
+		sp.forEachRemaining((k)->{
+			System.out.print(k.toString());
+		});
+		s.close();
+	}
+}
