@@ -1,0 +1,53 @@
+package test;
+public class EmployeeDetails {
+	public String eId, eName, eDesg;
+	public int sal;
+	public float totsal;
+	
+	public EmployeeDetails(String id, String name, String desg, int sal, float totsal) {
+		this.eId = id;
+		this.eName = name;
+		this.eDesg = desg;
+		this.sal = sal;
+		this.totsal = totsal;
+	}
+	
+	public String toString() {
+		return eId+"\t"+eName+"\t"+eDesg+"\t"+sal+"\t"+totsal+"\t";
+	}
+}
+
+//Main class
+
+package maccess;
+import test.EmployeeDetails;
+import java.util.*;
+public class DisplayEmployeesDetailsArray {
+
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	System.out.println("Enter the number of employees");
+	int n = Integer.parseInt(s.nextLine());
+	EmployeeDetails a[] = new EmployeeDetails[n];
+	for(int i = 0; i < n; i++) {
+		System.out.println("Eid");
+		String id = s.nextLine();
+		System.out.println("Ename");
+		String name = s.nextLine();
+		System.out.println("Edesg");
+		String desg = s.nextLine();
+		System.out.println("basic sal");
+		int bsal = Integer.parseInt(s.nextLine());
+		System.out.println("Totsal");
+		float totalsal = Float.parseFloat(s.nextLine());
+		a[i] = new EmployeeDetails(id, name, desg, bsal,totalsal);
+	}
+	
+	Spliterator<EmployeeDetails> sp = Arrays.spliterator(a);
+	sp.forEachRemaining((k) ->{
+		System.out.println(k.toString());
+	});
+	s.close();
+	}
+
+}
