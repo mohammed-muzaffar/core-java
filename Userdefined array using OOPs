@@ -1,0 +1,52 @@
+package test;
+
+public class Employee {
+	public String eName, eId;
+	public int eSal;
+	public double totSal;
+	
+	public Employee(String name, String id, int sal, double totsal) {
+		this.eName = name;
+		this.eId = id;
+		this.eSal = sal;
+		this.totSal = totsal;
+	}
+	
+	public String toString() {
+		return eName+"\t"+eId+"\t"+eSal+"\t"+totSal;
+	}
+}
+
+
+package maccess;
+import java.util.*;
+import test.*;
+public class MainClass {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the no of employee");
+		int n = Integer.parseInt(s.nextLine());
+		System.out.println("Enter the "+n+" Employees details");
+		Employee arr[] = new Employee[n];
+		for(int i = 0; i < arr.length; i++) {
+			System.out.println("Enter the name of the employee");
+			String eName = s.nextLine();
+			System.out.println("Enter the id of the employee");
+			String eId = s.nextLine();
+			System.out.println("Enter the sal of the employee");
+			int sal = Integer.parseInt(s.nextLine());
+			System.out.println("Enter the totsal of the employee");
+			double totsal = Double.parseDouble(s.nextLine());
+			arr[i] = new Employee(eName, eId, sal, totsal);
+		}
+		System.out.println("Employee details data");
+    //Using spliterator<T>
+		Spliterator<Employee> sp = Arrays.spliterator(arr);	
+		sp.forEachRemaining((k)->{
+			System.out.println(k.toString());
+		});
+		s.close();
+	}
+
+}
